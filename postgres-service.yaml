@@ -1,0 +1,16 @@
+apiVersion: v1 
+kind: Service
+metadata:
+  name: db #name of service-worker expects name of redis to be db if name anything else connection fail
+  labels:
+    name: postgres-service 
+    app: demo-voting-app #name of application
+spec:
+  ports:
+    - port: 5432
+      targetPort: 5432
+  selector:                          #link service to pod
+    name: postgres-pod
+    app: demo-voting-app
+                                    
+
